@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://b60j0skna7hop"]
+
+[ext_resource type="Texture2D" uid="uid://ctt6pduxh52s5" path="res://Art/BG.jpg" id="1_sds70"]
+[ext_resource type="PackedScene" uid="uid://dbeoiwfbcugji" path="res://Characters/Hyde/hyde.tscn" id="2_xip6g"]
+[ext_resource type="PackedScene" uid="uid://2htj73sqagdj" path="res://HUD.tscn" id="4_cknki"]
+[ext_resource type="Script" path="res://Scripts/Camera.cs" id="4_i6wc0"]
+[ext_resource type="Script" path="res://Scripts/Global/PlayerManager.cs" id="5_bbg13"]
+[ext_resource type="Script" path="res://Scripts/CameraTarget.cs" id="5_i8eo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dus7m"]
+size = Vector2(3500, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25ck3"]
+size = Vector2(50, 1500)
+
+[node name="Root" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(5.5, 5.5)
+texture = ExtResource("1_sds70")
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2(0, 630)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_dus7m")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="LeftWall" type="Area2D" parent="."]
+position = Vector2(-1730, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_25ck3")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="RightWall" type="Area2D" parent="."]
+position = Vector2(1730, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_25ck3")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+limit_left = -1730
+limit_top = -655
+limit_right = 1730
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.25
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_i6wc0")
+
+[node name="LeftBound" type="Area2D" parent="Camera2D"]
+position = Vector2(-960, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LeftBound"]
+shape = SubResource("RectangleShape2D_25ck3")
+debug_color = Color(0.866667, 0.658824, 0.454902, 0.686275)
+
+[node name="RightBound" type="Area2D" parent="Camera2D"]
+position = Vector2(960, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/RightBound"]
+shape = SubResource("RectangleShape2D_25ck3")
+debug_color = Color(0.866667, 0.658824, 0.454902, 0.686275)
+
+[node name="CameraTarget" type="Node2D" parent="."]
+script = ExtResource("5_i8eo4")
+
+[node name="HUDManager" parent="." instance=ExtResource("4_cknki")]
+
+[node name="PlayerManager" type="Node2D" parent="."]
+script = ExtResource("5_bbg13")
+
+[node name="Player1" parent="PlayerManager" instance=ExtResource("2_xip6g")]
+position = Vector2(-600, 250)
+BACKDASH_DURATION = 16
+RUNSPEED = 750
+DASHSPEED = 1000
+WALKSPEED = 300
+AIR_DASH_SPEED = 700
+AIR_DASH_DURATION = 20
+AIR_BACKDASH_DURATION = 10
+
+[node name="Player2" parent="PlayerManager" instance=ExtResource("2_xip6g")]
+position = Vector2(588, 250)
+id = 2
+BACKDASH_DURATION = 16
+RUNSPEED = 750
+DASHSPEED = 1000
+WALKSPEED = 300
+AIR_DASH_SPEED = 700
+AIR_DASH_DURATION = 20
+AIR_BACKDASH_DURATION = 10
