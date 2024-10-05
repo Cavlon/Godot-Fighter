@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ctt6pduxh52s5" path="res://Art/BG.jpg" id="1_sds70"]
 [ext_resource type="PackedScene" uid="uid://dbeoiwfbcugji" path="res://Characters/Hyde/hyde.tscn" id="2_xip6g"]
-[ext_resource type="PackedScene" uid="uid://2htj73sqagdj" path="res://HUD.tscn" id="4_cknki"]
+[ext_resource type="PackedScene" uid="uid://2htj73sqagdj" path="res://Scenes/HUD.tscn" id="4_cknki"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="4_i6wc0"]
 [ext_resource type="Script" path="res://Scripts/Global/PlayerManager.cs" id="5_bbg13"]
 [ext_resource type="Script" path="res://Scripts/CameraTarget.cs" id="5_i8eo4"]

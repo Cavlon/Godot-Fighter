@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://2htj73sqagdj"]
 
-[ext_resource type="Script" path="res://HUDManager.cs" id="1_fu6ih"]
-[ext_resource type="Script" path="res://HealthBar.cs" id="2_jt32y"]
+[ext_resource type="Script" path="res://Scripts/Global/HUDManager.cs" id="1_da4mn"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="2_mio2o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_javst"]
 
@@ -18,7 +18,7 @@ bg_color = Color(0.8, 0.396078, 0.298039, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_fu6ih")
+script = ExtResource("1_da4mn")
 
 [node name="HealthBar1" type="ProgressBar" parent="."]
 z_index = 1
@@ -30,7 +30,7 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_javst")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1mvuq")
 value = 60.0
 show_percentage = false
-script = ExtResource("2_jt32y")
+script = ExtResource("2_mio2o")
 
 [node name="DamageBar" type="ProgressBar" parent="HealthBar1"]
 z_index = -1
@@ -76,7 +76,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1mvuq")
 value = 60.0
 fill_mode = 1
 show_percentage = false
-script = ExtResource("2_jt32y")
+script = ExtResource("2_mio2o")
 
 [node name="DamageBar" type="ProgressBar" parent="HealthBar2"]
 z_index = -1
